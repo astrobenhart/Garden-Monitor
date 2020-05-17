@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 class Genplots():
 	def __init__(self):
@@ -38,12 +39,14 @@ class Genplots():
 		ax[0][1].set_title('Air Temperature')
 		ax[0][1].set_xlabel('Datetime')
 		ax[0][1].set_ylabel('Temperature (C)')
+		ax[0][1].legend()
 
 		self.data.methane_levels.plot(ax=ax[1][0], label='Methane', color='b')
 		self.data.CO_levels.plot(ax=ax[1][0], label='CO', color='r')
 		ax[1][0].set_title('Methane and CO Levels')
 		ax[1][0].set_xlabel('Datetime')
 		ax[1][0].set_ylabel('Levels (%)')
+		ax[1][0].legend()
 
 		self.data.pressure.plot(ax=ax[1][1])
 		ax[1][1].set_title('Pressure')
@@ -61,6 +64,8 @@ class Genplots():
 		ax[2][1].set_ylabel('Moisture (%)')
 
 		plt.tight_layout()
+
+		os.remove('plots/plots.png')
 
 		plt.savefig('plots/plots.png')
 
