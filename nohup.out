@@ -1,0 +1,13 @@
+[master 6e32a89] update plots Mon May 18 03:20:15 2020
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ rewrite plots/plots.png (97%)
+Warning: Permanently added the RSA host key for IP address '13.237.44.5' to the list of known hosts.
+To github.com:astrobenhart/Garden-Monitor.git
+   d486015..6e32a89  master -> master
+[master 04be83f] update plots Mon May 18 03:25:34 2020
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ssh: Could not resolve hostname github.com: Temporary failure in name resolution
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.

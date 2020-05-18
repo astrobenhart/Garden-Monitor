@@ -33,7 +33,7 @@ class Getnanoreadings:
           print('reading data')
           for i in range(8):
                data.append(self.read_sensor(i+1))
-          conn = sqlite3.connect('data.db')
+          conn = sqlite3.connect('/home/pi/Documents/Garden-Monitor/data.db')
           print('inserting data')
           c = conn.cursor()
           c.execute("INSERT INTO from_nano(datatime, humidity, air_temp1, methane_levels, CO_levels, pressure, air_temp2, soil_temp, soil_moisture) VALUES(?,?,?,?,?,?,?,?,?)", data)

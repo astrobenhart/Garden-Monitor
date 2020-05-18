@@ -13,7 +13,7 @@ class Genplots():
 	def sql_conn(self):
 		conn = None
 		try:
-			conn = sqlite3.connect('data.db')
+			conn = sqlite3.connect('/home/pi/Documents/Garden-Monitor/data.db')
 		except Exception as e:
 			print(e)
 
