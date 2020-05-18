@@ -27,7 +27,7 @@ class Genplots():
 
 		return rows
 
-	def gen_plots(self):
+	def gen_plots(self, save_fig=True):
 		fig, ax = plt.subplots(3,2, figsize=(12,18))
 		self.data.humidity.tail(24).plot(ax=ax[0][0])
 		ax[0][0].set_title('Humidity')
@@ -65,8 +65,7 @@ class Genplots():
 
 		plt.tight_layout()
 
-		os.remove('plots/plots.png')
-
-		plt.savefig('plots/plots.png')
-
-		plt.close()
+		if save_fig:
+			os.remove('plots/plots.png')
+			plt.savefig('plots/plots.png')
+			plt.close()
