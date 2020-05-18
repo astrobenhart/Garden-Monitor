@@ -66,6 +66,6 @@ class Genplots():
 		plt.tight_layout()
 
 		if save_fig:
-			os.remove('plots/plots.png')
-			plt.savefig('plots/plots.png')
+			os.remove('/home/pi/Documents/Garden-Monitor/plots/plots.png')
+			plt.savefig('/home/pi/Documents/Garden-Monitor/plots/plots.png')
 			plt.close()
