@@ -9,6 +9,7 @@ class Genplots():
 		self.data = pd.DataFrame(self.select_all(), columns=['datetime', 'humidity', 'air_temp1', 'methane_levels', 'CO_levels', 'pressure', 'air_temp2', 'soil_temp', 'soil_moisture'])
 		self.data.datetime = pd.to_datetime(self.data.datetime)
 		self.data = self.data.set_index('datetime')
+		print(self.data.head())
 
 	def sql_conn(self):
 		conn = None
