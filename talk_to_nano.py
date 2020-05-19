@@ -44,7 +44,7 @@ class Getnanoreadings:
           data = []
           data.append(time.ctime())
           print('reading data')
-          conn = sqlite3.connect('/home/pi/Documents/Garden-Monitor/data.db')
+          conn = sqlite3.connect('data.db')
           # c = conn.cursor()
           # c.execute('SELECT * FROM from_nano ORDER BY ROWID DESC LIMIT 1')
           # last_data = c.fetchone()

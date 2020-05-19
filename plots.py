@@ -14,7 +14,7 @@ class Genplots():
 	def sql_conn(self):
 		conn = None
 		try:
-			conn = sqlite3.connect('/home/pi/Documents/Garden-Monitor/data.db')
+			conn = sqlite3.connect('data.db')
 		except Exception as e:
 			print(e)
 
@@ -67,6 +67,6 @@ class Genplots():
 		plt.tight_layout()
 
 		if save_fig:
-			os.remove('/home/pi/Documents/Garden-Monitor/plots/plots.png')
-			plt.savefig('/home/pi/Documents/Garden-Monitor/plots/plots.png')
+			os.remove('plots/plots.png')
+			plt.savefig('plots/plots.png')
 			plt.close()
