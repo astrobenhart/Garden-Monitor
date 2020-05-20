@@ -8,10 +8,10 @@ plots = Genplots()
 
 while True:
 	reading.sql_insert()
-	print('done {}'.format(time.ctime()))
-	plots.gen_plots()
+	# plots.gen_plots()
 	os.system('git add plots/plots.png')
 	os.system('git add data.db')
 	os.system('git commit -m "update plots {}"'.format(time.ctime()))
 	os.system('git push')
+	print('done {}'.format(time.ctime()))
 	time.sleep(300)
