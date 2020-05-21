@@ -44,7 +44,11 @@ class Getnanoreadings:
           data = []
           data.append(time.ctime())
           print('reading data')
-          conn = sqlite3.connect('data.db')
+          try:
+	  	conn = sqlite3.connect('data.db')
+	  except Exception as e:
+               print(e)
+               conn = sqlite3.connect('/home/pi/Documents/Garden-Monitor/data.db')
           # c = conn.cursor()
           # c.execute('SELECT * FROM from_nano ORDER BY ROWID DESC LIMIT 1')
           # last_data = c.fetchone()
@@ -52,6 +56,7 @@ class Getnanoreadings:
                curr_data = self.read_sensor(i+1)
                # data_point = self.data_clean(curr_data, last_data)
                data.append(curr_data)
+	       print(curr_data)
           print('inserting data')
           c = conn.cursor()
           c.execute("INSERT INTO from_nano(datatime, humidity, air_temp1, methane_levels, CO_levels, pressure, air_temp2, soil_temp, soil_moisture) VALUES(?,?,?,?,?,?,?,?,?)", data)
