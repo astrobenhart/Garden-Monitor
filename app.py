@@ -1,13 +1,13 @@
 import sqlite3
-import matplotlib.pyplot as plt
-import pandas as pd
+#import matplotlib.pyplot as plt
+#import pandas as pd
 from tqdm import tqdm
 from datetime import datetime, timedelta
-import cufflinks as cf
-import plotly
-import plotly.offline as py
+#import cufflinks as cf
+#import plotly
+#import plotly.offline as py
 import plotly.graph_objs as go
-import flask as fl
+#import flask as fl
 import plotly.subplots as ps
 import dash
 import dash_core_components as dcc
@@ -18,6 +18,7 @@ import pandas as pd
 
 
 def clean_db(df, low=0, high=100):
+    df = df.apply(lambda x: pd.to_numeric(x, errors='coerce')).dropna()
     for i in tqdm(range(len(df.columns))):
         for j in range(len(df.iloc[:, i])):
             if not low < float(df.iloc[j, i]) < high:
@@ -30,6 +31,7 @@ df = pd.read_sql(sql_q, conn)
 df.datatime = pd.to_datetime(df.datatime)
 df = df.set_index('datatime')
 df = clean_db(df)
+
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -158,8 +160,10 @@ def Pressure_trace(start_date=datetime.now() - timedelta(days=2), end_date=datet
 
 ################# Layouts #################
 
-initial_start_date = datetime.now() - timedelta(days=7)
-initial_end_date = datetime.now()
+# initial_start_date = datetime.now() - timedelta(days=7)
+# initial_end_date = datetime.now()
+initial_end_date = df.index.max()
+initial_start_date = initial_end_date - timedelta(days=14)
 
 TempPlots = dbc.Container([
         dbc.Row([
@@ -345,4 +349,4 @@ def display_page(pathname):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=5001, host='127.0.0.1')
+    app.run_server(debug=False, port=5001, host='0.0.0.0')
